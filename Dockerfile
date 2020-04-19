@@ -18,7 +18,8 @@ RUN chown root.root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
 
 #install R
-echo [epel]"\n"name=Extra Packages for Enterprise Linux 6 - $basearch"\n"baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch > /etc/yum.repos.d/epel.repo
+RUN cat /etc/yum.repos.d/epel.repo
+RUN echo [epel]"\n"name=Extra Packages for Enterprise Linux 6 - $basearch"\n"baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch > /etc/yum.repos.d/epel.repo
 RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN yum -y install R
 
